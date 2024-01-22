@@ -1,7 +1,16 @@
+import Chat from "@/components/Chat";
+import {
+  HydrationBoundary,
+  QueryClient,
+  dehydrate,
+} from "@tanstack/react-query";
+
 export default function Page() {
+  const queryClient = new QueryClient();
+
   return (
-    <div>
-      <h1>Chat Page</h1>
-    </div>
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <Chat />
+    </HydrationBoundary>
   );
 }
